@@ -191,13 +191,6 @@ cloudnetmonitor/
 4. Push to the branch
 5. Create a Pull Request
 
-## License
-MIT License
-
-## Authors
-- Your Name
-- Contributors
-
 ## Acknowledgments
 - Material-UI for the component library
 - Docker for containerization
