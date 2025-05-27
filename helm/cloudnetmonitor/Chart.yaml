@@ -1,0 +1,12 @@
+apiVersion: v2
+name: cloudnetmonitor
+description: A Helm chart for CloudNetMonitor application
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+  - name: CloudNetMonitor Team
+dependencies:
+  - name: common
+    version: 2.x.x
+    repository: https://charts.bitnami.com/bitnami 

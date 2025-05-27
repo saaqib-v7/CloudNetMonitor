@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.11.9 on win32)" generated="2025-05-27T18:20:32.300533" rpa="false" schemaversion="5">
+<suite id="s1" name="Metrics Api" source="C:\Users\hamoo\Desktop\CloudNetMonitor\tests\api\metrics_api.robot">
+<test id="s1-t1" name="Get Public Metrics Should Return 200" line="11">
+<kw name="Create Session">
+<msg time="2025-05-27T18:20:32.662925" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<status status="FAIL" start="2025-05-27T18:20:32.661927" elapsed="0.000998">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="GET On Session">
+<var>${response}</var>
+<arg>api</arg>
+<arg>${METRICS_ENDPOINT}</arg>
+<status status="NOT RUN" start="2025-05-27T18:20:32.665469" elapsed="0.000000"/>
+</kw>
+<kw name="Status Should Be">
+<arg>200</arg>
+<arg>${response}</arg>
+<status status="NOT RUN" start="2025-05-27T18:20:32.666475" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-05-27T18:20:32.666827" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${json}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-05-27T18:20:32.667474" elapsed="0.000000"/>
+</kw>
+<kw name="Get From List" owner="Collections">
+<var>${first_metric}</var>
+<arg>${json}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="NOT RUN" start="2025-05-27T18:20:32.667474" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${first_metric}</arg>
+<arg>averageCpu</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-05-27T18:20:32.669019" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${first_metric}</arg>
+<arg>averageMemory</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-05-27T18:20:32.670096" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${first_metric}</arg>
+<arg>averageNetwork</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-05-27T18:20:32.671045" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${first_metric}</arg>
+<arg>timestamp</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-05-27T18:20:32.672044" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-05-27T18:20:32.654357" elapsed="0.017687">No keyword with name 'Create Session' found.</status>
+</test>
+<test id="s1-t2" name="Get Protected Metrics Should Return 401 Without Token" line="25">
+<kw name="Create Session">
+<msg time="2025-05-27T18:20:32.677564" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<status status="FAIL" start="2025-05-27T18:20:32.677564" elapsed="0.000000">No keyword with name 'Create Session' found.</status>
+</kw>
+<kw name="GET On Session">
+<var>${response}</var>
+<arg>api</arg>
+<arg>/api/nodes</arg>
+<arg>expected_status=401</arg>
+<status status="NOT RUN" start="2025-05-27T18:20:32.678571" elapsed="0.000000"/>
+</kw>
+<kw name="Status Should Be">
+<arg>401</arg>
+<arg>${response}</arg>
+<status status="NOT RUN" start="2025-05-27T18:20:32.679577" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-05-27T18:20:32.674044" elapsed="0.006535">No keyword with name 'Create Session' found.</status>
+</test>
+<doc>Test suite for CloudNetMonitor Metrics API</doc>
+<status status="FAIL" start="2025-05-27T18:20:32.303497" elapsed="0.379078"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Metrics Api" id="s1" pass="0" fail="2" skip="0">Metrics Api</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-05-27T18:20:32.593006" level="ERROR">Error in file 'C:\Users\hamoo\Desktop\CloudNetMonitor\tests\api\metrics_api.robot' on line 3: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\hamoo\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\robot.exe
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\python311.zip
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\DLLs
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0
+  C:\Users\hamoo\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages
+  C:\Users\hamoo\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\win32
+  C:\Users\hamoo\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\win32\lib
+  C:\Users\hamoo\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\Pythonwin
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\site-packages</msg>
+</errors>
+</robot>

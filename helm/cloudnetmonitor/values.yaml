@@ -1,0 +1,68 @@
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+
+frontend:
+  name: frontend
+  image:
+    repository: cloudnetmonitor/frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 2
+  service:
+    type: LoadBalancer
+    port: 80
+    targetPort: 80
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "200m"
+
+backend:
+  name: backend
+  image:
+    repository: cloudnetmonitor/backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 2
+  service:
+    type: ClusterIP
+    port: 3001
+    targetPort: 3001
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "200m"
+    limits:
+      memory: "512Mi"
+      cpu: "400m"
+  env:
+    - name: NODE_ENV
+      value: "production"
+    - name: PORT
+      value: "3001"
+
+simulator:
+  name: node-simulator
+  image:
+    repository: cloudnetmonitor/simulator
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "100m"
+    limits:
+      memory: "128Mi"
+      cpu: "200m"
+  env:
+    - name: BACKEND_URL
+      value: "http://backend:3001"
+    - name: NUM_NODES
+      value: "4"
+    - name: UPDATE_INTERVAL
+      value: "1000" 

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.simulator.name }}
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+    app.kubernetes.io/component: simulator
+spec:
+  replicas: {{ .Values.simulator.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "common.labels.matchLabels" . | nindent 6 }}
+      app.kubernetes.io/component: simulator
+  template:
+    metadata:
+      labels:
+        {{- include "common.labels.standard" . | nindent 8 }}
+        app.kubernetes.io/component: simulator
+    spec:
+      {{- include "common.images.pullSecrets" . | nindent 6 }}
+      containers:
+        - name: {{ .Values.simulator.name }}
+          image: "{{ .Values.simulator.image.repository }}:{{ .Values.simulator.image.tag }}"
+          imagePullPolicy: {{ .Values.simulator.image.pullPolicy }}
+          env:
+            {{- range .Values.simulator.env }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+            {{- end }}
+          resources:
+            {{- toYaml .Values.simulator.resources | nindent 12 }} 

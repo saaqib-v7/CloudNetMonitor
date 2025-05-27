@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+
+  node-simulator:
+    build: ./simulator
+    environment:
+      - BACKEND_URL=http://backend:3001
+      - NUM_NODES=4
+      - UPDATE_INTERVAL=1000
+    depends_on:
+      - backend 
